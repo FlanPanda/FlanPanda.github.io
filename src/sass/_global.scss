@@ -1,0 +1,58 @@
+// Import Typefaces
+    // Tiempos (offline font with backward compatibility)
+@font-face {
+    font-family: Tiempos Headline;
+    src: url("../assets/fonts/TiemposHeadline-Light.eot"); // IE9 Compat Modes
+    src: url("../assets/fonts/TiemposHeadline-Light.eot?#iefix") format("embedded-opentype"), // IE6-IE8
+        url("../assets/fonts/TiemposHeadline-Light.woff") format("woff"), // modern browsers
+        url("../assets/fonts/TiemposHeadline-Light.ttf") format("truetype"); // Safari, Android, iOS
+    font-weight: 300;
+}
+@font-face {
+    font-family: Tiempos Headline;
+    src: url("../assets/fonts/TiemposHeadline-Medium.eot"); // IE9 Compat Modes
+    src: url("../assets/fonts/TiemposHeadline-Medium.eot?#iefix") format("embedded-opentype"), // IE6-IE8
+        url("../assets/fonts/TiemposHeadline-Medium.woff") format("woff"), // modern browsers
+        url("../assets/fonts/TiemposHeadline-Medium.ttf") format("truetype"); // Safari, Android, iOS
+    font-weight: 500;
+}
+@font-face {
+    font-family: Tiempos Headline;
+    src: url("../assets/fonts/TiemposHeadline-Black.eot"); // IE9 Compat Modes
+    src: url("../assets/fonts/TiemposHeadline-Black.eot?#iefix") format("embedded-opentype"), // IE6-IE8
+        url("../assets/fonts/TiemposHeadline-Black.woff") format("woff"), // modern browsers
+        url("../assets/fonts/TiemposHeadline-Black.ttf") format("truetype"); // Safari, Android, iOS
+    font-weight: 900;
+}
+@font-face {
+    font-family: Tiempos Text;
+    src: url("../assets/fonts/TiemposText-RegularItalic.eot"); // IE9 Compat Modes
+    src: url("../assets/fonts/TiemposText-RegularItalic.eot?#iefix") format("embedded-opentype"), // IE6-IE8
+        url("../assets/fonts/TiemposText-RegularItalic.woff") format("woff"), // modern browsers
+        url("../assets/fonts/TiemposText-RegularItalic.ttf") format("truetype"); // Safari, Android, iOS
+    font-weight: 400;
+    font-style: italic;
+}
+
+    // Open Sans (Google web font)
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+// General
+html{
+    font-size: 100%; // accessibility: user control zoom level
+    box-sizing: border-box;
+        /* default = content-box > specify content dimensions, padding & border expands outward
+        border-box > dimensions include paddings & border */
+}
+
+*, *::before, *::after{
+    box-sizing: inherit; // make all html elements border-box
+    margin: 0; // 8px by default
+    padding: 0;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+@import "navbar";

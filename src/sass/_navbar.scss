@@ -1,0 +1,190 @@
+.navbar-container{
+    position: relative;
+    display: flex; // default as row & no-wrap
+    height: 64px;
+    // justify-content: flex-end;
+    background-color: $bgwhite;
+    border-bottom: 1px solid $lightgrey;
+}
+
+// Logo
+// .navbar-logo{
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%,-50%);
+//     a{
+//         text-decoration: none;
+//     }
+//     img{
+//         float: left;
+//         height: 32px;
+//         .logo-f{
+//             position: absolute;
+//             margin-right: calc(-100px);
+//         }
+//     }
+// }
+
+.box-right{
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding: 0px 23px;
+    border: 1px solid $lightgrey;
+    cursor: pointer;
+
+    // Menu Word
+    .menu-toggle-word{
+        font-size: 14px;
+        font-weight: 600;
+        color: $black;
+        width: 40px;
+        margin-right: 10px;
+        transition: all ease-in-out 300ms;
+        // span{
+        //     transition: color ease-in-out 300ms;
+        // }
+        .CLOSE{
+            display: none;
+        }
+    }
+
+    // Hamburger menu & toggle
+    .menu-toggle-icon{ // clickable area
+        flex: 0 0 auto; // flex-grow, flex-shrink, flex-basis
+        order: 1;
+        width: 15px;
+        height: 12px;
+        // margin-left: 10px;
+        position: relative;
+        .hamburger, .cross{
+            position: absolute;
+            top: 50%; // 50% down by top-left corner
+            left: 50%; // 50% right by top-right corner
+            transform: translate(-50%,-50%); // up and left 50% of itself
+        }
+        .hamburger div{
+            display: block; // unlike inline, block starts a new line and takes up the whole width
+            position: relative;
+            width: 15px; // invisible container
+            height: 2px;
+            border-radius: 2px;
+            margin-bottom: 3px;
+            overflow: hidden; // there are technically two menu sliding left & right out of and into the container
+            &:last-child{
+                float: right;
+                width: 10px;
+                margin-bottom: 0px;
+            }
+
+            &:before,&:after{ // create 2 hamburger icons (before/after)
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: 2px;
+            }
+            &:before{
+                background-color: $black;
+                transition: transform ease 300ms;
+            }
+            &:nth-child(2):before{
+                transition-delay: 75ms;
+            }
+            &:last-child:before{
+                transition-delay: 200ms;
+            }
+            &:after{
+                background-color: $grey;
+                transition: transform ease 300ms;
+                transform: translateX(100%);
+            }
+            &:nth-child(2):after{
+                transition-delay: 75ms;
+            }
+            &:last-child:after{
+                transition-delay: 200ms;
+            }
+        }
+        .cross div{
+            display: block;
+            width: 15px;
+            height: 2px;
+            border-radius: 1px;
+            background-color: $grey;
+            &:first-child{
+                transform: translateY(50%) rotate(45deg) scaleX(0);
+            }
+            &:last-child{
+                transform: translateY(-50%) rotate(-45deg) scaleX(0);
+            }
+            transition: background-color ease 300ms;
+        }
+    }
+
+    // Hover state
+    &:hover{
+        .menu-toggle-icon{
+            .hamburger div{
+                &:after{
+                    transform: translateX(0);
+                }
+            }
+            .cross div{
+                background-color: $grey;
+                transition: background-color ease 300ms;
+            }
+        }
+        .menu-toggle-word{
+            color: $grey;
+            transition: color ease 300ms;
+        }
+    }
+
+    // test start
+    &.active{
+        .menu-toggle-icon{
+            .hamburger div{
+                &:before, &:after{
+                    transform: translateX(100%);
+                    transition: none;
+                }
+            }
+            .cross div{
+                &:first-child{
+                    transform: translateY(50%) rotate(45deg) scaleX(1);
+                }
+                &:last-child{
+                    transform: translateY(-50%) rotate(-45deg) scaleX(1);
+                }
+                transition: transform ease 300ms;
+            }
+        }
+        // &.onclick // use JS to have onclick for .3s, then revert back to just active
+
+        .menu-toggle-word{
+            .MENU{
+                display: none;
+            }
+            .CLOSE{
+                display: block;
+            }
+        }
+    }
+    // test end
+}
+
+// Nav Links
+.navlist{
+    list-style: none;
+    font-size: 1.125rem;
+    a, a:visited{
+        text-decoration: none;
+        color: $darkgrey;
+    }
+    a:hover{
+        color: $black;
+        font-weight: 600;
+    }
+}
