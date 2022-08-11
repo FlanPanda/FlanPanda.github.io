@@ -41,7 +41,7 @@
         color: $black;
         width: 40px;
         margin-right: 10px;
-        transition: all ease-in-out 300ms;
+        transition: all ease 300ms;
         // span{
         //     transition: color ease-in-out 300ms;
         // }
@@ -64,13 +64,14 @@
             left: 50%; // 50% right by top-right corner
             transform: translate(-50%,-50%); // up and left 50% of itself
         }
+
         .hamburger div{
             display: block; // unlike inline, block starts a new line and takes up the whole width
             position: relative;
             width: 15px; // invisible container
             height: 2px;
             border-radius: 2px;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
             overflow: hidden; // there are technically two menu sliding left & right out of and into the container
             &:last-child{
                 float: right;
@@ -85,9 +86,10 @@
                 height: 100%;
                 border-radius: 2px;
             }
+
             &:before{
                 background-color: $black;
-                transition: transform ease 300ms;
+                transition: transform ease .3s;
             }
             &:nth-child(2):before{
                 transition-delay: 75ms;
@@ -95,9 +97,10 @@
             &:last-child:before{
                 transition-delay: 200ms;
             }
+
             &:after{
                 background-color: $grey;
-                transition: transform ease 300ms;
+                transition: transform ease .3s;
                 transform: translateX(100%);
             }
             &:nth-child(2):after{
@@ -107,19 +110,19 @@
                 transition-delay: 200ms;
             }
         }
+
         .cross div{
             display: block;
             width: 15px;
             height: 2px;
             border-radius: 1px;
-            background-color: $grey;
+            background-color: $black;
             &:first-child{
                 transform: translateY(50%) rotate(45deg) scaleX(0);
             }
             &:last-child{
                 transform: translateY(-50%) rotate(-45deg) scaleX(0);
             }
-            transition: background-color ease 300ms;
         }
     }
 
@@ -133,12 +136,12 @@
             }
             .cross div{
                 background-color: $grey;
-                transition: background-color ease 300ms;
+                transition: background-color ease .3s;
             }
         }
         .menu-toggle-word{
             color: $grey;
-            transition: color ease 300ms;
+            transition: color ease .3s;
         }
     }
 
@@ -147,7 +150,7 @@
         .menu-toggle-icon{
             .hamburger div{
                 &:before, &:after{
-                    transform: translateX(100%);
+                    transform: translateX(101%); // subpixel render > bleeding edge
                     transition: none;
                 }
             }
@@ -158,10 +161,9 @@
                 &:last-child{
                     transform: translateY(-50%) rotate(-45deg) scaleX(1);
                 }
-                transition: transform ease 300ms;
+                transition: all ease .3s;
             }
         }
-        // &.onclick // use JS to have onclick for .3s, then revert back to just active
 
         .menu-toggle-word{
             .MENU{
