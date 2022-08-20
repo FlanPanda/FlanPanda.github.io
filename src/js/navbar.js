@@ -1,11 +1,11 @@
 $(document).ready(function(){
-	$(".box-right").click(function(){
+	$(".box-right, .nav-overlay").click(function(){
 		if($(".box-right").hasClass("active")){
-			$(".box-right.active").removeClass("active");
+			$(".box-right.active, .side-nav.active, .nav-overlay.active").removeClass("active");
 			// setTimeout(function(){
 			// 	$(".hamburger")}, 300)
 		} else {
-			$(".box-right").addClass("active")
+			$(".box-right, .side-nav, .nav-overlay").addClass("active")
 		}
 	});
 

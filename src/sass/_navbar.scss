@@ -1,50 +1,49 @@
 .navbar-container{
     position: relative;
-    display: flex; // default as row & no-wrap
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     height: 64px;
-    // justify-content: flex-end;
     background-color: $bgwhite;
     border-bottom: 1px solid $lightgrey;
 }
 
 // Logo
-// .navbar-logo{
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%,-50%);
-//     a{
-//         text-decoration: none;
-//     }
-//     img{
-//         float: left;
-//         height: 32px;
-//         .logo-f{
-//             position: absolute;
-//             margin-right: calc(-100px);
-//         }
-//     }
-// }
+.box-left{
+    display: flex;
+    flex-grow: 100;
+    align-items: center;
+    height: 100%;
+    padding: 0px 23px;
+    border-right: 1px solid $lightgrey;
+}
+.navbar-logo a{
+    text-decoration: none;
+    font: 500 24px 'Tiempos Headline', serif; // style variant weight size line-height font
+    color: $black;
+    .period{
+        color: $green;
+    }
+}
 
 .box-right{
     display: flex;
+    flex-basis: auto;
+    z-index: 102;
     align-items: center;
-    height: 64px;
+    height: 100%;
     padding: 0px 23px;
-    border: 1px solid $lightgrey;
     cursor: pointer;
 
     // Menu Word
     .menu-toggle-word{
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 600;
         color: $black;
         width: 40px;
         margin-right: 10px;
-        transition: all ease 300ms;
-        // span{
-        //     transition: color ease-in-out 300ms;
-        // }
+        transition: all ease .3s;
+        user-select: none;
         .CLOSE{
             display: none;
         }
@@ -56,7 +55,6 @@
         order: 1;
         width: 15px;
         height: 12px;
-        // margin-left: 10px;
         position: relative;
         .hamburger, .cross{
             position: absolute;
@@ -78,7 +76,6 @@
                 width: 10px;
                 margin-bottom: 0px;
             }
-
             &:before,&:after{ // create 2 hamburger icons (before/after)
                 content: "";
                 position: absolute;
@@ -86,7 +83,6 @@
                 height: 100%;
                 border-radius: 2px;
             }
-
             &:before{
                 background-color: $black;
                 transition: transform ease .3s;
@@ -97,7 +93,6 @@
             &:last-child:before{
                 transition-delay: 200ms;
             }
-
             &:after{
                 background-color: $grey;
                 transition: transform ease .3s;
@@ -110,7 +105,6 @@
                 transition-delay: 200ms;
             }
         }
-
         .cross div{
             display: block;
             width: 15px;
@@ -145,7 +139,7 @@
         }
     }
 
-    // test start
+    // Active state
     &.active{
         .menu-toggle-icon{
             .hamburger div{
@@ -174,19 +168,52 @@
             }
         }
     }
-    // test end
 }
 
-// Nav Links
-.navlist{
-    list-style: none;
-    font-size: 1.125rem;
-    a, a:visited{
+// nav menu
+.side-nav{
+    position: fixed; // position related to the browser winder
+    z-index: 101;
+    height: 100%;
+    width: 320px;
+    top: 0;
+    right: 0;
+    transform: translateX(101%);
+    transition: transform ease .3s;
+    background: $bgwhite;
+    display: flex;
+    flex-direction: column;
+    padding-top: 64px;
+    a{
+        padding: 24px 36px;
         text-decoration: none;
-        color: $darkgrey;
-    }
-    a:hover{
         color: $black;
-        font-weight: 600;
+        font-weight: 700;
+        border-bottom: 1px solid $lightgrey;
+        &:first-child{
+            border-top: 1px solid $lightgrey;
+        }
+    }
+    &.active{
+        transform: translateX(0%);
+        transition: transform ease .3s;
+    }
+}
+
+.nav-overlay{
+    visibility: hidden;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: $black;
+    opacity: 0;
+    transition: visibility ease .3s, opacity ease .3s;
+    &.active{
+        visibility: visible;
+        opacity: 0.75;
+        transition: opacity ease .3s;
     }
 }
